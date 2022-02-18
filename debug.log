@@ -113,3 +113,6 @@
 [1231/002818:ERROR:registration_protocol_win.cc(53)] CreateFile: Das System kann die angegebene Datei nicht finden. (0x2)
 [0204/040322:ERROR:registration_protocol_win.cc(53)] CreateFile: Das System kann die angegebene Datei nicht finden. (0x2)
 [0831/204924:ERROR:registration_protocol_win.cc(53)] CreateFile: Das System kann die angegebene Datei nicht finden. (0x2)
+[0817/154953:ERROR:registration_protocol_win.cc(53)] CreateFile: Das System kann die angegebene Datei nicht finden. (0x2)
+[0104/155153:ERROR:registration_protocol_win.cc(53)] CreateFile: Das System kann die angegebene Datei nicht finden. (0x2)
+[0105/151852:ERROR:registration_protocol_win.cc(53)] CreateFile: Das System kann die angegebene Datei nicht finden. (0x2)

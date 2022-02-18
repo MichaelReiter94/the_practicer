@@ -1,0 +1,151 @@
+#N canvas 0 0 1888 970 10;
+#X obj 571 150 cnv 30 348 150 empty empty empty 20 12 0 14 -135105
+-66577 0;
+#X msg 1202 552 -1;
+#X text 1234 552 clear whole text;
+#X obj 1376 462 openpanel;
+#X msg 1053 616 read \$1;
+#X symbolatom 1134 617 64 0 0 0 - - -, f 64;
+#X obj 1376 433 bng 22 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 1053 339 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X symbolatom 1053 397 49 0 0 0 - - -, f 49;
+#X obj 1053 426 list append;
+#X obj 1053 451 l2s /;
+#X obj 1053 372 getdir 1;
+#X obj 1089 322 t b s;
+#X obj 1367 390 cnv 30 421 38 empty empty empty 20 12 0 14 -135105
+-66577 0;
+#X obj 1376 395 inlet;
+#X text 1422 400 inlet 3: bang opens the directory to load file from
+there;
+#X obj 1052 734 text define -k \$0-temp;
+#A set zeile 10 \; zeile 20 \; zeile 30 \;;
+#X obj 1202 584 text delete \$0-temp;
+#X floatatom 683 603 5 0 0 0 - - -, f 5;
+#X obj 683 542 text get \$0-temp;
+#X obj 683 577 list length;
+#X obj 796 542 text size \$0-temp;
+#X floatatom 796 603 5 0 0 0 - - -, f 5;
+#X obj 796 460 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 128 31 cnv 30 375 82 empty empty empty 20 12 0 14 -4096 -66577
+0;
+#X text 134 94 but with a blank space separating it from the line itself
+;
+#X obj 560 705 cnv 30 294 37 empty empty empty 20 12 0 14 -258049 -66577
+0;
+#X obj 579 714 outlet;
+#X obj 683 714 outlet;
+#X obj 796 714 outlet;
+#X text 433 754 outlet 1: list of the defined line of the text;
+#X text 532 788 outlet 2: number of elements in the line that is output
+in outlet 1;
+#X text 733 756 outlet 3: number of lines of the text;
+#X obj 683 446 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 522 471 cnv 30 194 46 empty empty empty 20 12 0 14 -135105 -66577
+0;
+#X obj 683 479 i \$1;
+#X obj 1053 535 t s b;
+#X obj 796 354 del 200;
+#X floatatom 372 388 5 0 0 0 - - -, f 5;
+#X obj 683 404 t b f;
+#X obj 1088 217 route local global;
+#X obj 1193 244 print needs to define if "global" or "local";
+#X obj 1202 521 loadbang;
+#X obj 1231 175 route init;
+#X obj 1231 155 list trim;
+#X obj 1352 192 print incorrect initialisation: you need to prepend
+"init_" before the filename;
+#X obj 1222 29 cnv 30 406 85 empty empty empty 20 12 0 14 -135105 -66577
+0;
+#X obj 1231 61 symbol \$2;
+#X obj 1231 37 loadbang;
+#X obj 1231 130 s2l *;
+#X text 1306 58 if the prepended "init*" is missing it will not work
+;
+#X text 1306 39 initialization argument 2: "init*filename.txt";
+#X text 1305 79 subfolders are possible though: "init*subfolder/filename.txt"
+, f 52;
+#X obj 419 497 text set \$0-temp;
+#X floatatom 683 521 5 0 0 0 - - -, f 5;
+#X msg 1101 691 write \$1;
+#X obj 1101 661 symbol;
+#X obj 997 639 bng 22 250 50 0 empty empty save 0 24 0 10 -4033 -1
+-1;
+#X text 533 476 creation argument 1:;
+#X text 534 498 read line number \$1;
+#X text 574 195 - "readLine" + float (which line should be output)
+;
+#X text 574 220 - "replace" + list (replacces the old line);
+#X text 574 242 - "load" + "local" or "global" + directory (from local
+folder or global path);
+#X obj 358 150 cnv 30 216 43 empty empty empty 20 12 0 14 -135105 -66577
+0;
+#X obj 372 163 inlet;
+#X text 418 159 the inlet needs the following list with the "flags"
+as precursor:;
+#X text 134 36 each line in the text file must be terminated with a
+semicolon \; ;
+#X obj 372 200 route readLine replace load save;
+#X text 574 277 - save (overwrite loaded file with current state);
+#X obj 796 431 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 561 313 print no precursor/flag matched a route option;
+#X obj 419 306 list;
+#X connect 1 0 17 0;
+#X connect 3 0 36 0;
+#X connect 4 0 16 0;
+#X connect 5 0 56 1;
+#X connect 6 0 3 0;
+#X connect 7 0 11 0;
+#X connect 7 0 37 0;
+#X connect 8 0 9 0;
+#X connect 9 0 10 0;
+#X connect 10 0 36 0;
+#X connect 11 0 8 0;
+#X connect 12 0 7 0;
+#X connect 12 1 9 1;
+#X connect 14 0 6 0;
+#X connect 18 0 28 0;
+#X connect 19 0 20 0;
+#X connect 19 0 27 0;
+#X connect 20 0 18 0;
+#X connect 21 0 22 0;
+#X connect 22 0 29 0;
+#X connect 23 0 21 0;
+#X connect 33 0 35 0;
+#X connect 33 0 23 0;
+#X connect 35 0 53 1;
+#X connect 35 0 54 0;
+#X connect 36 0 4 0;
+#X connect 36 0 5 0;
+#X connect 36 1 1 0;
+#X connect 37 0 69 0;
+#X connect 38 0 39 0;
+#X connect 39 0 33 0;
+#X connect 39 1 35 1;
+#X connect 40 0 12 0;
+#X connect 40 1 36 0;
+#X connect 40 2 41 0;
+#X connect 42 0 1 0;
+#X connect 43 0 12 0;
+#X connect 43 1 45 0;
+#X connect 44 0 43 0;
+#X connect 47 0 49 0;
+#X connect 48 0 47 0;
+#X connect 49 0 44 0;
+#X connect 54 0 19 0;
+#X connect 55 0 16 0;
+#X connect 56 0 55 0;
+#X connect 57 0 56 0;
+#X connect 64 0 67 0;
+#X connect 67 0 38 0;
+#X connect 67 1 71 0;
+#X connect 67 2 40 0;
+#X connect 67 3 57 0;
+#X connect 67 4 70 0;
+#X connect 69 0 33 0;
+#X connect 71 0 53 0;
